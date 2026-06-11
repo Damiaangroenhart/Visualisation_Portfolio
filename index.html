@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Name — Data Visualization Portfolio</title>
+<meta name="description" content="Portfolio of data visualizations by Your Name." />
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  HOW TO USE THIS FILE
+  ════════════════════════════════════════════════════════════════
+  1. Create a folder called  images/  next to this file.
+  2. Add your portrait as       images/photo.jpg
+  3. Add your visualizations as images/viz-01.png, viz-02.png, ...
+  4. Search for "EDIT" in this file — every spot you should
+     personalize is marked with an EDIT comment.
+  5. To add or remove a project, copy or delete one whole
+     <article class="card"> ... </article> block.
+  ════════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    /* ——— palette ——— */
+    --bg:        #E3E8EF;   /* clearly tinted slate-blue */
+    --surface:   #FFFFFF;
+    --ink:       #16181D;
+    --muted:     #5B616B;
+    --line:      #D2D9E2;
+    --accent:    #3563E9;   /* series blue */
+    --cat-map:   #2C9C6A;   /* maps          */
+    --cat-inter: #8A63D2;   /* interactive   */
+    --cat-other: #E8930C;   /* analysis / experiments */
+
+    --display: "Hanken Grotesk", system-ui, sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+    --maxw: 1080px;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *, *::before, *::after{ transition: none !important; animation: none !important; }
+  }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ——— mono "axis tick" labels ——— */
+  .tick{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ═══════════ header ═══════════ */
+  header{
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .nav a{ text-decoration: none; }
+  .nav .links{ display: flex; gap: 28px; }
+  .nav .links a{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    transition: color .15s ease;
+  }
+  .nav .links a:hover{ color: var(--ink); }
+  .brand{
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ═══════════ hero ═══════════ */
+  .hero{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 88px 0 96px;
+  }
+  .hero h1{
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin: 14px 0 22px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero p{
+    color: var(--muted);
+    max-width: 46ch;
+    font-size: 18px;
+  }
+
+  /* legend — categories of work, like chart series */
+  .legend{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    margin-top: 34px;
+  }
+  .legend span{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .dot{
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: none;
+  }
+  .dot.map{   background: var(--cat-map); }
+  .dot.inter{ background: var(--cat-inter); }
+  .dot.other{ background: var(--cat-other); }
+
+  /* portrait with offset axis-line frame */
+  .portrait{
+    position: relative;
+    justify-self: end;
+    width: min(320px, 100%);
+  }
+  .portrait img{
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    background: var(--line);
+  }
+  .portrait::before{
+    content: "";
+    position: absolute;
+    inset: 14px -14px -14px 14px;
+    border-left: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0 0 var(--radius) 0;
+    pointer-events: none;
+  }
+  .portrait figcaption{
+    position: absolute;
+    bottom: -36px; left: 16px;
+  }
+
+  /* ═══════════ sections ═══════════ */
+  section{ padding: 72px 0; }
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    border-top: 1px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 44px;
+  }
+  .section-head h2{
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  /* ═══════════ work cards ═══════════ */
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(22,24,29,.08);
+  }
+  .card img{
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+    background: var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .card .body{
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .card .meta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card h3{
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .card p{
+    color: var(--muted);
+    font-size: 15.5px;
+    flex: 1;
+  }
+  .card .tools{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    margin-top: 6px;
+  }
+
+  /* ═══════════ about ═══════════ */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+  }
+  .about-grid .text p + p{ margin-top: 16px; }
+  .about-grid .text p{ color: var(--ink); max-width: 62ch; }
+  .facts{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .facts div{
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+  }
+  .facts strong{
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .facts span{ color: var(--muted); font-size: 14.5px; }
+
+  /* ═══════════ footer ═══════════ */
+  footer{
+    border-top: 1px solid var(--ink);
+    padding: 44px 0 64px;
+  }
+  .footer-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .footer-inner .links{ display: flex; gap: 26px; }
+  .footer-inner a{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s ease;
+  }
+  .footer-inner a:hover{ color: var(--accent); }
+
+  /* ═══════════ responsive ═══════════ */
+  @media (max-width: 800px){
+    .hero{
+      grid-template-columns: 1fr;
+      gap: 56px;
+      padding: 56px 0 72px;
+    }
+    .portrait{ justify-self: start; }
+    .grid{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <!-- EDIT: your name or initials -->
+    <a class="brand" href="#top">Damiaan Groenhart</a>
+    <nav class="links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div class="wrap hero">
+    <div>
+      <span class="tick">Data visualization · Portfolio</span>
+      <!-- EDIT: your headline -->
+      <h1>Data visualization portfolio</h1>
+      <!-- EDIT: one or two sentences about what you do -->
+      <p>I'm Damiaan Groenhart. This is a collection of maps, spatial analyses, and interactive visualizations I've made over the past year.</p>
+
+      <!-- The legend: the kinds of work in this portfolio.
+           EDIT the labels to match your own categories. -->
+      <div class="legend" aria-label="Types of work">
+        <span><i class="dot map"></i>Maps</span>
+        <span><i class="dot other"></i>Analysis</span>
+        <span><i class="dot inter"></i>Interactive</span>
+      </div>
+    </div>
+
+    <figure class="portrait">
+      <!-- EDIT: put your photo at images/photo.jpg (portrait orientation works best) -->
+      <img src="images/photo.jpg" alt="Portrait of Damiaan Groenhart" />
+      <figcaption class="tick">Fig. 00 — The author</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══════════ WORK ═══════════ -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tick">01</span>
+        <h2>Selected visualizations</h2>
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+          <img src="images/elephant-routes.png" alt="Map showing dense, overlapping GPS tracking routes of elephants across a reserve" />
+          <div class="body">
+            <div class="meta">
+              <span class="tick">Fig. 01</span>
+              <span class="dot inter" title="Interactive"></span>
+            </div>
+            <h3>Elephant movement routes</h3>
+            <p>GPS tracker data from a population of elephants, processed and mapped in Python with the Folium package. Each line is one individual's recorded track; where many tracks overlap, the brighter corridors emerge — showing the routes and core areas the herd relies on most.</p>
+            <div class="tools">Geoscripting · Python, Folium</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="images/ndvi-houston.jpg" alt="NDVI map of Harris County, Texas, classified from red (low vegetation) to dark green (high vegetation)" />
+          <div class="body">
+            <div class="meta">
+              <span class="tick">Fig. 02</span>
+              <span class="dot map" title="Map"></span>
+            </div>
+            <h3>NDVI of Harris County, Houston</h3>
+            <p>Normalized Difference Vegetation Index calculated from open-source satellite imagery and processed in ArcGIS. Green represents high NDVI and red represents low NDVI, highlighting where urban green space is present — and where it is lacking — across Harris County.</p>
+            <div class="tools">Geo-Information Science in Context · ArcGIS</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="images/suitability-pipeline.png" alt="Two maps: a suitability surface with the resulting optimal pipeline route, and that route shown alongside waste water locations and a refinement basin in the Maas-Waal area" />
+          <div class="body">
+            <div class="meta">
+              <span class="tick">Fig. 03</span>
+              <span class="dot other" title="Analysis"></span>
+            </div>
+            <h3>Pipeline route suitability, Maas-Waal</h3>
+            <p>A multi-criteria suitability analysis built in ArcGIS ModelBuilder to find the best route for a wastewater pipeline connecting industrial wastewater locations to a refinement basin in the Maas-Waal area. The upper map shows the suitability surface and resulting optimal path; the lower map places that path in its real-world context alongside the source locations and the basin.</p>
+            <div class="tools">Geo-Information Tools · ArcGIS ModelBuilder</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="images/landuse-knn-oosterbeek.png" alt="Side-by-side comparison of a Sentinel-2 image of Oosterbeek and a land cover classification map produced with a KNN classifier" />
+          <div class="body">
+            <div class="meta">
+              <span class="tick">Fig. 04</span>
+              <span class="dot other" title="Analysis"></span>
+            </div>
+            <h3>Land cover classification, Oosterbeek</h3>
+            <p>A K-nearest neighbours classifier trained in Python on Sentinel-2 imagery to map land cover around Oosterbeek — distinguishing built-up areas, forest, herbaceous vegetation, and water. The result (right) is shown next to the S2-GLC reference product, used as ground truth to assess the classifier's accuracy along the urban–rural gradient.</p>
+            <div class="tools">Machine Learning · Python, scikit-learn</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tick">02</span>
+        <h2>About me</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="text">
+          <p>I am an enthusiastic master's student in the field of Geo-Information Science. I have focussed on building my skillset in the domains of advanced remote sensing and data science driven applications. Originally from Dordrecht, I am currently based in Wageningen.</p>
+        </div>
+
+        <div class="facts">
+          <!-- EDIT: quick facts (optional — delete any you don't want) -->
+          <div><strong>Based in</strong><span>Wageningen, NL</span></div>
+          <div><strong>Tools</strong><span>Python, R, ArcGIS, Folium, scikit-learn, NetLogo, Vensim</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="contact">
+  <div class="wrap footer-inner">
+    <span class="tick">© 2026 Damiaan Groenhart</span>
+    <div class="links">
+      <!-- EDIT: your real links -->
+      <a href="mailto:damiaangroenhart@gmail.com">Email</a>
+      <a href="https://github.com/Damiaangroenhart">GitHub</a>
+      <a href="https://www.linkedin.com/in/damiaan-groenhart-8a6889204/">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
