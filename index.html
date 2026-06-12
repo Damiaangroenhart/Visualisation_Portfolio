@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title> Damiaan Groenhart — Data Visualization Portfolio</title>
+<title>Damiaan Groenhart — Data Visualization Portfolio</title>
 <meta name="description" content="Portfolio of data visualizations by Damiaan Groenhart." />
 
 <!--
@@ -298,6 +298,49 @@
     padding-top: 12px;
     margin-top: 6px;
   }
+  .card .ext-link{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card .ext-link:hover{ text-decoration: underline; }
+
+  /* placeholder preview for non-image work (e.g. prototype links) */
+  .proto-preview{
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent) 0%, #1B2A57 100%);
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: opacity .15s ease;
+  }
+  .proto-preview:hover{ opacity: .9; }
+  .proto-preview .proto-tick{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+  }
+  .proto-preview .proto-label{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 6px;
+    padding: 9px 18px;
+  }
 
   /* ═══════════ about ═══════════ */
   .about-grid{
@@ -431,6 +474,7 @@
             </div>
             <h3>NDVI of Harris County, Houston</h3>
             <p>Normalized Difference Vegetation Index calculated from open-source satellite imagery and processed in ArcGIS. Green represents high NDVI and red represents low NDVI, highlighting where urban green space is present — and where it is lacking — across Harris County.</p>
+            <a class="ext-link" href="https://storymaps.arcgis.com/stories/ce489e2e22ec4f99ad9da8d86ff3ccf0" target="_blank" rel="noopener">View the full StoryMap ↗</a>
             <div class="tools">Geo-Information Science in Context · ArcGIS</div>
           </div>
         </article>
@@ -458,6 +502,23 @@
             <h3>Land cover classification, Oosterbeek</h3>
             <p>A K-nearest neighbours classifier trained in Python on Sentinel-2 imagery to map land cover around Oosterbeek — distinguishing built-up areas, forest, herbaceous vegetation, and water. The result (right) is shown next to the S2-GLC reference product, used as ground truth to assess the classifier's accuracy along the urban–rural gradient.</p>
             <div class="tools">Machine Learning · Python, scikit-learn</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="proto-preview" href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&p=f&t=Ndo4MFw21EYOxmhm-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=794%3A115" target="_blank" rel="noopener">
+            <span class="proto-tick">Fig. 05 — Figma prototype</span>
+            <span class="proto-label">Open prototype ↗</span>
+          </a>
+          <div class="body">
+            <div class="meta">
+              <span class="tick">Fig. 05</span>
+              <span class="dot inter" title="Interactive"></span>
+            </div>
+            <h3>Hotspotters — Vote for Watchtower</h3>
+            <p>An interactive prototype for a citizen-science web app, developed with my group for the GIS Integration course. Users can explore reported hotspots on a map and vote on proposed watchtower locations, helping prioritise where new watchtowers should be placed.</p>
+            <a class="ext-link" href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&p=f&t=Ndo4MFw21EYOxmhm-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=794%3A115" target="_blank" rel="noopener">Open the Figma prototype ↗</a>
+            <div class="tools">GIS Integration · Figma</div>
           </div>
         </article>
 
