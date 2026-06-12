@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Damiaan Groenhart — Data Visualization Portfolio</title>
+<title>Damiaan Groenhart: Data Visualization Portfolio</title>
 <meta name="description" content="Portfolio of data visualizations by Damiaan Groenhart." />
 
 <!--
@@ -13,7 +13,7 @@
   1. Create a folder called  images/  next to this file.
   2. Add your portrait as       images/photo.jpg
   3. Add your visualizations as images/viz-01.png, viz-02.png, ...
-  4. Search for "EDIT" in this file — every spot you should
+  4. Search for "EDIT" in this file: every spot you should
      personalize is marked with an EDIT comment.
   5. To add or remove a project, copy or delete one whole
      <article class="card"> ... </article> block.
@@ -26,7 +26,7 @@
 
 <style>
   :root{
-    /* ——— palette ——— */
+    /* palette */
     --bg:        #E3E8EF;   /* clearly tinted slate-blue */
     --surface:   #FFFFFF;
     --ink:       #16181D;
@@ -74,7 +74,7 @@
     padding: 0 24px;
   }
 
-  /* ——— mono "axis tick" labels ——— */
+  /* mono "axis tick" labels */
   .tick{
     font-family: var(--mono);
     font-size: 12px;
@@ -135,7 +135,7 @@
     font-size: 18px;
   }
 
-  /* legend — categories of work, like chart series */
+  /* legend: categories of work, like chart series */
   .legend{
     display: flex;
     flex-wrap: wrap;
@@ -365,6 +365,17 @@
     font-weight: 700;
   }
   .facts span{ color: var(--muted); font-size: 14.5px; }
+  .competences{
+    list-style: none;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .competences li{
+    color: var(--muted);
+    font-size: 14.5px;
+  }
 
   /* ═══════════ footer ═══════════ */
   footer{
@@ -422,7 +433,7 @@
     <div>
       <span class="tick">Data visualization · Portfolio</span>
       <!-- EDIT: your headline -->
-      <h1>Data visualization portfolio</h1>
+      <h1>Data Visualization Portfolio</h1>
       <!-- EDIT: one or two sentences about what you do -->
       <p>I'm Damiaan Groenhart. This is a collection of maps, spatial analyses, and interactive visualizations I've made over the past year.</p>
 
@@ -438,7 +449,7 @@
     <figure class="portrait">
       <!-- EDIT: put your photo at images/photo.jpg (portrait orientation works best) -->
       <img src="images/photo.jpg" alt="Portrait of Damiaan Groenhart" />
-      <figcaption class="tick">Fig. 00 — The author</figcaption>
+      <figcaption class="tick">Fig. 00: Me</figcaption>
     </figure>
   </div>
 
@@ -460,7 +471,7 @@
               <span class="dot inter" title="Interactive"></span>
             </div>
             <h3>Elephant movement routes</h3>
-            <p>GPS tracker data from a population of elephants, processed and mapped in Python with the Folium package. Each line is one individual's recorded track; where many tracks overlap, the brighter corridors emerge — showing the routes and core areas the herd relies on most.</p>
+            <p>GPS tracker data from a population of elephants, processed and mapped in Python with the Folium package. Each line is one individual's recorded track, and where many tracks overlap, the brighter corridors emerge, showing the routes and core areas the herd relies on most.</p>
             <div class="tools">Geoscripting · Python, Folium</div>
           </div>
         </article>
@@ -473,7 +484,7 @@
               <span class="dot map" title="Map"></span>
             </div>
             <h3>NDVI of Harris County, Houston</h3>
-            <p>Normalized Difference Vegetation Index calculated from open-source satellite imagery and processed in ArcGIS. Green represents high NDVI and red represents low NDVI, highlighting where urban green space is present — and where it is lacking — across Harris County.</p>
+            <p>Normalized Difference Vegetation Index calculated from open-source satellite imagery and processed in ArcGIS. Green represents high NDVI and red represents low NDVI, highlighting where urban green space is present and where it is lacking across Harris County.</p>
             <a class="ext-link" href="https://storymaps.arcgis.com/stories/ce489e2e22ec4f99ad9da8d86ff3ccf0" target="_blank" rel="noopener">View the full StoryMap ↗</a>
             <div class="tools">Geo-Information Science in Context · ArcGIS</div>
           </div>
@@ -500,14 +511,14 @@
               <span class="dot other" title="Analysis"></span>
             </div>
             <h3>Land cover classification, Oosterbeek</h3>
-            <p>A K-nearest neighbours classifier trained in Python on Sentinel-2 imagery to map land cover around Oosterbeek — distinguishing built-up areas, forest, herbaceous vegetation, and water. The result (right) is shown next to the S2-GLC reference product, used as ground truth to assess the classifier's accuracy along the urban–rural gradient.</p>
+            <p>A K-nearest neighbours classifier trained in Python on Sentinel-2 imagery to map land cover around Oosterbeek, distinguishing built-up areas, forest, herbaceous vegetation, and water. The result (right) is shown next to the S2-GLC reference product, used as ground truth to assess the classifier's accuracy along the urban-rural gradient.</p>
             <div class="tools">Machine Learning · Python, scikit-learn</div>
           </div>
         </article>
 
         <article class="card">
           <a class="proto-preview" href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&p=f&t=Ndo4MFw21EYOxmhm-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=794%3A115" target="_blank" rel="noopener">
-            <span class="proto-tick">Fig. 05 — Figma prototype</span>
+            <span class="proto-tick">Fig. 05: Figma prototype</span>
             <span class="proto-label">Open prototype ↗</span>
           </a>
           <div class="body">
@@ -515,7 +526,7 @@
               <span class="tick">Fig. 05</span>
               <span class="dot inter" title="Interactive"></span>
             </div>
-            <h3>Hotspotters — Vote for Watchtower</h3>
+            <h3>Hotspotters: Vote for Watchtower</h3>
             <p>An interactive prototype for a citizen-science web app, developed with my group for the GIS Integration course. Users can explore reported hotspots on a map and vote on proposed watchtower locations, helping prioritise where new watchtowers should be placed.</p>
             <a class="ext-link" href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&p=f&t=Ndo4MFw21EYOxmhm-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=794%3A115" target="_blank" rel="noopener">Open the Figma prototype ↗</a>
             <div class="tools">GIS Integration · Figma</div>
@@ -540,9 +551,19 @@
         </div>
 
         <div class="facts">
-          <!-- EDIT: quick facts (optional — delete any you don't want) -->
+          <!-- EDIT: quick facts (optional, delete any you don't want) -->
           <div><strong>Based in</strong><span>Wageningen, NL</span></div>
           <div><strong>Tools</strong><span>Python, R, ArcGIS, Folium, scikit-learn, NetLogo, Vensim</span></div>
+          <div>
+            <strong>Competences</strong>
+            <ul class="competences">
+              <li>Programming in Python and R</li>
+              <li>Machine learning and deep learning</li>
+              <li>Statistics and data analysis</li>
+              <li>Remote sensing and ArcGIS</li>
+              <li>Thinking in systems</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
