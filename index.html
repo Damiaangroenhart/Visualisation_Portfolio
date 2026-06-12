@@ -164,7 +164,7 @@
   .portrait{
     position: relative;
     justify-self: end;
-    width: min(320px, 100%);
+    width: min(220px, 100%);
   }
   .portrait img{
     width: 100%;
@@ -230,7 +230,44 @@
     display: block;
     background: var(--line);
     border-bottom: 1px solid var(--line);
+    cursor: zoom-in;
   }
+
+  /* ═══════════ lightbox ═══════════ */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(22, 24, 29, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    z-index: 100;
+    cursor: zoom-out;
+  }
+  .lightbox.open{ display: flex; }
+  .lightbox img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    cursor: default;
+  }
+  .lightbox .close{
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .lightbox .close:hover{ background: rgba(255,255,255,0.18); }
   .card .body{
     padding: 20px 22px 24px;
     display: flex;
@@ -373,7 +410,7 @@
       <div class="grid">
 
         <article class="card">
-          <img src="images/elephant-routes.png" alt="Map showing dense, overlapping GPS tracking routes of elephants across a reserve" />
+          <img src="images/elephant-routes.png" alt="Map showing dense, overlapping GPS tracking routes of elephants across a reserve" onclick="openLightbox(this)" />
           <div class="body">
             <div class="meta">
               <span class="tick">Fig. 01</span>
@@ -386,7 +423,7 @@
         </article>
 
         <article class="card">
-          <img src="images/ndvi-houston.jpg" alt="NDVI map of Harris County, Texas, classified from red (low vegetation) to dark green (high vegetation)" />
+          <img src="images/ndvi-houston.jpg" alt="NDVI map of Harris County, Texas, classified from red (low vegetation) to dark green (high vegetation)" onclick="openLightbox(this)" />
           <div class="body">
             <div class="meta">
               <span class="tick">Fig. 02</span>
@@ -399,7 +436,7 @@
         </article>
 
         <article class="card">
-          <img src="images/suitability-pipeline.png" alt="Two maps: a suitability surface with the resulting optimal pipeline route, and that route shown alongside waste water locations and a refinement basin in the Maas-Waal area" />
+          <img src="images/suitability-pipeline.png" alt="Two maps: a suitability surface with the resulting optimal pipeline route, and that route shown alongside waste water locations and a refinement basin in the Maas-Waal area" onclick="openLightbox(this)" />
           <div class="body">
             <div class="meta">
               <span class="tick">Fig. 03</span>
@@ -412,7 +449,7 @@
         </article>
 
         <article class="card">
-          <img src="images/landuse-knn-oosterbeek.png" alt="Side-by-side comparison of a Sentinel-2 image of Oosterbeek and a land cover classification map produced with a KNN classifier" />
+          <img src="images/landuse-knn-oosterbeek.png" alt="Side-by-side comparison of a Sentinel-2 image of Oosterbeek and a land cover classification map produced with a KNN classifier" onclick="openLightbox(this)" />
           <div class="body">
             <div class="meta">
               <span class="tick">Fig. 04</span>
@@ -464,6 +501,32 @@
     </div>
   </div>
 </footer>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="close" onclick="closeLightbox(event)">Close ✕</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  function openLightbox(imgEl){
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imgEl.src;
+    lightboxImg.alt = imgEl.alt;
+    lightbox.classList.add('open');
+  }
+  function closeLightbox(e){
+    // Close on background or close-button click, but not when clicking the image itself
+    if (e.target.id === 'lightbox-img') return;
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  });
+</script>
 
 </body>
 </html>
